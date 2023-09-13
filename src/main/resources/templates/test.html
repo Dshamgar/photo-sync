@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Photosync</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div>
+    <h1>Photosync</h1>
+</div>
+<div>
+    <form action="#" th:action=@{/download} method="post" th:object="${form}">
+        <div class="form-group required-control">
+            <fieldset>
+                <table>
+                    <tdhead>
+                        <tr>
+                            <th style="text-align:center;">Download?</th>
+                            <th style="text-align:center;">Album Title</th>
+                            <th style="text-align:center;">Number Items</th>
+                            <th style="text-align:center;">Album Id</th>
+                            <th style="text-align:center;">Items Downloaded</th>
+                        </tr>
+                    </tdhead>
+                    <tdbody>
+                        <tr th:each="albumHeader, itemStat : *{albumHeaderList}" }>
+                            <td style="text-align:center;">
+                                <input type="checkbox"
+                                       th:field="${form.albumHeaderList[__${itemStat.index}__].download}"/>
+                            </td>
+                            <td><input readonly="readonly"
+                                       th:field="*{albumHeaderList[__${itemStat.index}__].albumName}"/></td>
+                            <td><input style="text-align:center;" readonly="readonly"
+                                       th:field="*{albumHeaderList[__${itemStat.index}__].numberItems}"/>
+                            </td>
+                            <td><input readonly="readonly"
+                                       th:field="*{albumHeaderList[__${itemStat.index}__].albumId}"/>
+                            </td>
+                            <td>
+                                <input style="text-align:center;" readonly="readonly"
+                                       th:field="*{albumHeaderList[__${itemStat.index}__].itemsDownloaded}"/>
+                            </td>
+
+                        </tr>
+                    </tdbody>
+                </table>
+            </fieldset>
+        </div>
+        <input type="submit" id="submitButton" th:value="Save">
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+com\schroeder\photosync\domains\AlbumContents.class
+com\schroeder\photosync\services\AlbumService.class
+com\schroeder\photosync\controllers\IndexController.class
+com\schroeder\photosync\PhotosyncApplication.class
